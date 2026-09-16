@@ -325,13 +325,9 @@ def wrap(lang, title, pdf, body):
     )
     return head + body
 
-(ROOT / "docs/proposal-databypassion-reallife.html").write_text(
-    wrap("en", "DatabyPassion — Offer for Real Life Technologies", "proposal-databypassion-reallife.pdf", proposal_body),
-    encoding="utf-8",
-)
 (ROOT / "docs/nuno-call-script.html").write_text(
     wrap("pt", "DatabyPassion — script interno Nuno / RLT (não enviar)", "nuno-call-script.pdf", script_body),
     encoding="utf-8",
 )
-print("wrote html", (ROOT / "docs/proposal-databypassion-reallife.html").stat().st_size)
 print("wrote html", (ROOT / "docs/nuno-call-script.html").stat().st_size)
+print("skipped proposal html — canonical file is docs/proposal-databypassion-reallife.html")
