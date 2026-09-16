@@ -50,11 +50,33 @@ button, input, textarea { font-family: inherit; }
   border-bottom: 1px solid var(--border);
 }
 
-.brand { display: flex; align-items: center; gap: 10px; color: #fff; }
-.logo-mark { width: 34px; height: 22px; }
-.brand-text { display: flex; flex-direction: column; line-height: 1.05; }
-.brand-text strong { font-size: 0.95rem; letter-spacing: 0.02em; }
-.brand-text em { font-style: normal; font-size: 0.58rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); }
+.brand { display: flex; align-items: center; color: #fff; }
+.brand-lockup {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: #fff;
+}
+.logo-mark { width: 48px; height: 29px; flex: 0 0 auto; }
+.brand-wordmark {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.02;
+}
+.brand-wordmark strong {
+  font-size: 1.02rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+.brand-wordmark em {
+  font-style: normal;
+  font-size: 0.62rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  color: rgba(243, 241, 234, 0.58);
+}
+.brand-lockup--color .brand-wordmark em { color: rgba(243, 241, 234, 0.72); }
 
 .nav-links { display: flex; align-items: center; gap: 22px; }
 .nav-links a {
@@ -156,22 +178,7 @@ button, input, textarea { font-family: inherit; }
 .hero-mark {
   display: flex;
   align-items: center;
-  gap: 10px;
   padding-bottom: 8px;
-  color: #fff;
-}
-.hero-mark span {
-  display: flex;
-  flex-direction: column;
-  font-size: 0.62rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--gold);
-}
-.hero-mark strong {
-  font-size: 0.95rem;
-  letter-spacing: 0.02em;
-  text-transform: none;
   color: #fff;
 }
 .help-card, .talk-card {
@@ -336,9 +343,7 @@ button, input, textarea { font-family: inherit; }
   gap: 16px;
   flex-wrap: wrap;
 }
-.footer-brand { display: flex; align-items: center; gap: 10px; }
-.footer-brand div { display: flex; flex-direction: column; line-height: 1.1; }
-.footer-brand span { font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); }
+.footer-brand { display: flex; align-items: center; }
 .footer-note { margin: 0; color: #6d7684; font-size: 0.78rem; }
 .footer-links { display: flex; gap: 16px; font-size: 0.82rem; color: var(--text-dim); }
 

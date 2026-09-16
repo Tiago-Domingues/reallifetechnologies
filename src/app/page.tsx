@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { CtaStrip } from "@/components/CtaStrip";
 import { HeroCanvas } from "@/components/HeroCanvas";
-import { LogoMark } from "@/components/LogoMark";
+import { BrandLockup } from "@/components/BrandLockup";
 import { useI18n } from "@/lib/i18n";
 import { useModal } from "@/components/ModalProvider";
 
@@ -35,11 +35,7 @@ export default function HomePage() {
           </article>
         </div>
         <div className="container hero-mark">
-          <LogoMark />
-          <span>
-            <strong>reallife</strong>
-            technologies
-          </span>
+          <BrandLockup variant="color" />
         </div>
       </section>
 
