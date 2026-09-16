@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { Instrument_Sans } from "next/font/google";
 import { CookieBanner } from "@/components/CookieBanner";
+import { ContactModal } from "@/components/ContactModal";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { ModalProvider } from "@/components/ModalProvider";
 import { Reveal } from "@/components/Reveal";
 import { I18nProvider } from "@/lib/i18n";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
@@ -31,11 +33,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="pt">
       <body className={`${sans.variable} site-root`}>
         <I18nProvider>
-          <Header />
-          <Reveal />
-          <main>{children}</main>
-          <Footer />
-          <CookieBanner />
+          <ModalProvider>
+            <Header />
+            <Reveal />
+            <main>{children}</main>
+            <Footer />
+            <CookieBanner />
+            <ContactModal />
+          </ModalProvider>
         </I18nProvider>
       </body>
     </html>

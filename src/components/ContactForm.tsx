@@ -4,16 +4,16 @@ import { useState } from "react";
 import { CONTACT_EMAIL, HQ_ADDRESS } from "@/lib/site";
 import { useI18n } from "@/lib/i18n";
 
-export function ContactForm() {
+export function ContactForm({ compact = false }: { compact?: boolean }) {
   const { t } = useI18n();
   const [sent, setSent] = useState(false);
 
   return (
-    <div className="contact-layout">
+    <div className={compact ? "contact-layout is-compact" : "contact-layout"}>
       <form
         className="contact-form"
-        onSubmit={(e) => {
-          e.preventDefault();
+        onSubmit={(event) => {
+          event.preventDefault();
           setSent(true);
         }}
       >
@@ -31,24 +31,26 @@ export function ContactForm() {
         </label>
         <label>
           {t.contact.message}
-          <textarea name="message" rows={5} required />
+          <textarea name="message" rows={compact ? 4 : 5} required />
         </label>
         <button type="submit" className="btn-gold" disabled={sent}>
           {sent ? t.contact.sent : t.contact.send}
         </button>
       </form>
-      <aside className="contact-aside">
-        <div>
-          <span>{t.contact.addressLabel}</span>
-          <p>{HQ_ADDRESS}</p>
-        </div>
-        <div>
-          <span>{t.contact.emailLabel}</span>
-          <p>
-            <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
-          </p>
-        </div>
-      </aside>
+      {compact ? null : (
+        <aside className="contact-aside">
+          <div>
+            <span>{t.contact.addressLabel}</span>
+            <p>{HQ_ADDRESS}</p>
+          </div>
+          <div>
+            <span>{t.contact.emailLabel}</span>
+            <p>
+              <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+            </p>
+          </div>
+        </aside>
+      )}
     </div>
   );
 }

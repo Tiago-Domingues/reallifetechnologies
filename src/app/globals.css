@@ -118,8 +118,15 @@ button, input, textarea { font-family: inherit; }
 .hero {
   position: relative;
   min-height: 100vh;
-  padding: calc(var(--nav-h) + 12px) 0 0;
+  padding: var(--nav-h) 0 28px;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.hero-stage {
+  position: relative;
+  flex: 1 0 auto;
+  min-height: 52vh;
 }
 .hero-canvas {
   position: absolute;
@@ -132,7 +139,7 @@ button, input, textarea { font-family: inherit; }
   position: absolute;
   left: 0;
   right: 0;
-  top: 58%;
+  bottom: 0;
   height: 2px;
   background: linear-gradient(90deg, transparent, var(--gold) 18%, var(--gold-bright), var(--gold) 82%, transparent);
   box-shadow: 0 0 18px rgba(212, 175, 55, 0.55);
@@ -142,23 +149,30 @@ button, input, textarea { font-family: inherit; }
   position: relative;
   z-index: 2;
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 40px;
-  padding: min(42vh, 380px) 0 72px;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  padding: 28px 0 18px;
 }
-.hero-kicker {
-  font-size: 0.68rem;
-  letter-spacing: 0.18em;
+.hero-mark {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 8px;
+  color: #fff;
+}
+.hero-mark span {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--gold);
-  margin: 0 0 10px;
 }
-.hero h1 {
-  margin: 0 0 16px;
-  font-size: clamp(1.8rem, 4vw, 3.1rem);
-  line-height: 1.08;
-  letter-spacing: -0.03em;
-  max-width: 16ch;
+.hero-mark strong {
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: #fff;
 }
 .help-card, .talk-card {
   background: linear-gradient(180deg, rgba(18, 24, 33, 0.55), rgba(7, 9, 13, 0.35));
@@ -167,9 +181,11 @@ button, input, textarea { font-family: inherit; }
   padding: 22px 22px 20px;
   backdrop-filter: blur(10px);
 }
-.help-card h2, .talk-card h2 {
+.help-card h1,
+.help-card h2,
+.talk-card h2 {
   margin: 0 0 8px;
-  font-size: 1.15rem;
+  font-size: 1.2rem;
 }
 .help-card p, .talk-card p {
   margin: 0 0 16px;
@@ -346,6 +362,41 @@ button, input, textarea { font-family: inherit; }
 .cookie-banner p { margin: 4px 0 0; color: var(--text-dim); font-size: 0.85rem; }
 .cookie-actions { display: flex; gap: 8px; align-items: center; }
 
+.modal-scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(3, 5, 8, 0.72);
+  backdrop-filter: blur(10px);
+}
+.modal-panel {
+  position: relative;
+  width: min(720px, 100%);
+  max-height: calc(100vh - 48px);
+  overflow: auto;
+  padding: 28px 24px 24px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--bg-deep);
+}
+.modal-panel h2 { margin: 0 0 8px; font-size: 1.7rem; }
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  background: transparent;
+  color: #fff;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+.contact-layout.is-compact { grid-template-columns: 1fr; }
+
 .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
 .reveal.is-in { opacity: 1; transform: none; }
 
@@ -353,16 +404,15 @@ button, input, textarea { font-family: inherit; }
   .nav-links { display: none; }
   .nav-menu { display: block; }
   .mobile-nav { display: flex; }
-  .hero-copy { grid-template-columns: 1fr; padding-top: min(46vh, 360px); }
+  .hero-copy { grid-template-columns: 1fr; padding-top: 20px; }
   .pillar-grid, .facts { grid-template-columns: 1fr 1fr; }
   .contact-layout { grid-template-columns: 1fr; }
-  .hero-gold { top: 48%; }
 }
 
 @media (max-width: 640px) {
-  .hero { min-height: 100svh; }
-  .hero-copy { gap: 14px; padding: min(50vh, 340px) 0 36px; }
-  .hero h1 { max-width: none; font-size: 1.7rem; }
+  .hero { min-height: 100svh; padding-bottom: 18px; }
+  .hero-stage { min-height: 46vh; }
+  .hero-copy { gap: 12px; padding: 16px 0 10px; }
   .help-card, .talk-card { padding: 16px; }
   .pillar-grid, .facts { grid-template-columns: 1fr; }
   .cookie-banner { flex-direction: column; }

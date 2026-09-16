@@ -1,8 +1,11 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 
 export function Reveal() {
+  const pathname = usePathname();
+
   useEffect(() => {
     const nodes = document.querySelectorAll<HTMLElement>(".reveal");
     const io = new IntersectionObserver(
@@ -16,9 +19,9 @@ export function Reveal() {
       },
       { threshold: 0.16 },
     );
-    nodes.forEach((n) => io.observe(n));
+    nodes.forEach((node) => io.observe(node));
     return () => io.disconnect();
-  }, []);
+  }, [pathname]);
 
   return null;
 }
