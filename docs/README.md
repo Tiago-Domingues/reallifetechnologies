@@ -4,10 +4,12 @@ This folder is the DatabyPassion paperwork for the Real Life Technologies call. 
 
 ## Send after the call (English)
 
-- [proposal-databypassion-reallife.pdf](proposal-databypassion-reallife.pdf) — cotação. Default **€9.500 + IVA**, Care Standard **€149/mês**.
+- [proposal-databypassion-reallife.pdf](proposal-databypassion-reallife.pdf) — cotação, **five pages**. Default **€9.500 + IVA**, Care Standard **€149/mês**.
 - HTML source if he wants to read in a browser: [proposal-databypassion-reallife.html](proposal-databypassion-reallife.html)
 
 Do not send during the call. Fill numbers only if Understand changed scope.
+
+The offer is written as a client document: value of the new site, DatabyPassion method and Digital products practice, first product, prototype, domains (MX untouched), Build + Care, next steps. Internal call coaching stays in the script below.
 
 ## Internal only (Portuguese) — do not send
 
@@ -23,3 +25,5 @@ From the repo root, with Google Chrome installed:
 ```bash
 npm run pdf
 ```
+
+Edit the proposal HTML directly. `scripts/build-docs.py` must not overwrite it.
