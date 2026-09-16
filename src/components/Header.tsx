@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { NAV } from "@/lib/copy";
 import { useI18n } from "@/lib/i18n";
-import { LogoMark } from "@/components/LogoMark";
+import { BrandLockup } from "@/components/BrandLockup";
 
 export function Header() {
   const { t, locale, setLocale } = useI18n();
@@ -27,11 +27,7 @@ export function Header() {
   return (
     <header className={`nav${scrolled ? " scrolled" : ""}`}>
       <Link href="/" className="brand" aria-label="Real Life Technologies">
-        <LogoMark />
-        <span className="brand-text">
-          <strong>reallife</strong>
-          <em>technologies</em>
-        </span>
+        <BrandLockup variant="mono" />
       </Link>
 
       <nav className="nav-links" aria-label="Primary">
