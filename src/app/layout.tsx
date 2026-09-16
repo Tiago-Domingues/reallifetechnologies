@@ -16,6 +16,7 @@ const sans = Instrument_Sans({
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
+  icons: { icon: "/favicon.svg" },
   title: {
     default: `${SITE_NAME} | ICT integrator`,
     template: `%s | ${SITE_NAME}`,
