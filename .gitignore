@@ -1,0 +1,12 @@
+node_modules
+.next
+out
+.vercel
+*.tsbuildinfo
+.DS_Store
+.env*.local
+
+# WhatsApp source screenshots — not for the public repo
+1-3.png
+2-3.png
+3-3.png

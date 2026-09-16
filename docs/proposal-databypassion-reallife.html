@@ -1,0 +1,945 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>DatabyPassion — Offer for Real Life Technologies</title>
+  <style>
+
+:root {
+  color-scheme: light;
+  --brand-ink: #1f2430;
+  --brand-dark: #12161f;
+  --brand-blue: #2e7fa8;
+  --brand-blue-light: #7bc5e8;
+  --brand-orange: #f5871f;
+  --brand-cream: #fbf9ef;
+  --brand-gray: #6f7280;
+  --brand-mid-gray: #b9bcc6;
+  --brand-light-gray: #f5f6f9;
+  --brand-border: #d9dbe2;
+  --brand-link: #1f6f9c;
+  --page-side: 70px;
+  --page-top: 50px;
+  --page-bottom: 66px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@page {
+  size: A4;
+  margin: 14mm 18mm 19mm;
+}
+
+@page cover {
+  margin: 0;
+}
+
+@page toc {
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  color: var(--brand-ink);
+  background: #ffffff;
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-size: 12.3px;
+  line-height: 1.44;
+  overflow-wrap: break-word;
+}
+
+.cover-page,
+.toc-page,
+.document-body {
+  padding: var(--page-top) var(--page-side) var(--page-bottom);
+}
+
+/* ---------- Cover ---------- */
+
+.cover-page {
+  page: cover;
+  position: relative;
+  min-height: 100vh;
+  page-break-after: always;
+  overflow: hidden;
+  color: #ffffff;
+  background:
+    radial-gradient(circle at 78% 10%, rgba(123, 197, 232, 0.34), transparent 26%),
+    radial-gradient(circle at 22% 30%, rgba(46, 127, 168, 0.42), transparent 26%),
+    radial-gradient(circle at 84% 78%, rgba(245, 135, 31, 0.26), transparent 20%),
+    linear-gradient(135deg, #0e1219 0%, #18202e 46%, #141a26 100%);
+}
+
+.cover-brand {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.cover-logo-tile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 132px;
+  padding: 9px 11px;
+  border-radius: 8px;
+  background: var(--brand-cream);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.28);
+}
+
+.cover-logo-tile img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.brand-name {
+  position: relative;
+  padding-top: 20px;
+  color: #ffffff;
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: -0.015em;
+}
+
+.brand-name::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 58px;
+  height: 6px;
+  background: var(--brand-orange);
+  transform: skewY(-7deg);
+  transform-origin: left center;
+}
+
+.brand-tagline {
+  margin-top: 4px;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 8.4px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.cover-content {
+  position: relative;
+  z-index: 1;
+  max-width: 690px;
+  margin-top: 72px;
+}
+
+.cover-eyebrow {
+  margin: 0 0 10px;
+  color: var(--brand-blue-light);
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.cover-page h1 {
+  margin: 0;
+  max-width: 620px;
+  color: #ffffff;
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+}
+
+.cover-subtitle {
+  max-width: 600px;
+  margin: 10px 0 0;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 13.5px;
+  line-height: 1.3;
+}
+
+.cover-meta {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+  max-width: 540px;
+  margin-top: 26px;
+}
+
+.cover-meta-row {
+  position: relative;
+  min-height: 48px;
+  padding: 9px 12px 8px;
+  border: 1px solid rgba(123, 197, 232, 0.6);
+  border-left: 3px solid var(--brand-blue-light);
+  background: rgba(255, 255, 255, 0.055);
+}
+
+.cover-meta-row span {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--brand-blue-light);
+  font-size: 7.2px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.cover-meta-row strong {
+  display: block;
+  color: #ffffff;
+  font-size: 9.6px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.cover-headline-figures {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 9px;
+  max-width: 540px;
+  margin-top: 22px;
+}
+
+.cover-figure {
+  padding: 10px 12px;
+  border-top: 3px solid var(--brand-orange);
+  background: rgba(255, 255, 255, 0.055);
+}
+
+.cover-figure b {
+  display: block;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.cover-figure span {
+  display: block;
+  margin-top: 3px;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 7.6px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.cover-summary {
+  max-width: 625px;
+  margin-top: 24px;
+}
+
+.cover-summary h2 {
+  margin: 0 0 7px;
+  padding: 0;
+  border: 0;
+  color: #ffffff;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.cover-summary p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.87);
+  font-size: 10.4px;
+  line-height: 1.46;
+}
+
+.cover-footer {
+  position: absolute;
+  right: var(--page-side);
+  bottom: 30px;
+  left: var(--page-side);
+  display: flex;
+  justify-content: space-between;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.26);
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 7.6px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* ---------- Table of contents ---------- */
+
+.toc-page {
+  page: toc;
+  min-height: 100vh;
+  page-break-after: always;
+  background:
+    radial-gradient(circle at 78% 16%, rgba(123, 197, 232, 0.3), transparent 28%),
+    radial-gradient(circle at 10% 40%, rgba(245, 135, 31, 0.14), transparent 26%),
+    #ffffff;
+}
+
+.toc-card {
+  max-width: 600px;
+  margin: 14px auto 0;
+  padding: 16px 22px 18px;
+  border: 1px solid #cfd2dc;
+  border-radius: 8px;
+  background: linear-gradient(112deg, rgba(232, 245, 251, 0.9), rgba(253, 249, 242, 0.94));
+  box-shadow: 0 1px 2px rgba(31, 36, 48, 0.08);
+}
+
+.toc-card h2 {
+  margin-top: 0;
+  margin-bottom: 11px;
+  padding-top: 0;
+  border-top: 0;
+  color: var(--brand-ink);
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.toc-card ol,
+.toc-card ul {
+  max-width: 100%;
+  margin: 0;
+  padding-left: 17px;
+  color: var(--brand-ink);
+  font-size: 8.4px;
+  line-height: 1.5;
+}
+
+.toc-card li {
+  margin: 2.5px 0;
+}
+
+.toc-card ul ul {
+  padding-left: 14px;
+  color: var(--brand-gray);
+  font-size: 7.9px;
+}
+
+.toc-card a {
+  color: inherit;
+}
+
+/* ---------- Typography ---------- */
+
+h1 {
+  margin: 0 0 10px;
+  font-size: 28px;
+  line-height: 1.15;
+}
+
+h2 {
+  margin: 22px 0 8px;
+  padding-top: 7px;
+  border-top: 2px solid var(--brand-blue-light);
+  font-size: 17px;
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+  break-after: avoid;
+  page-break-after: avoid;
+}
+
+h3 {
+  margin: 15px 0 6px;
+  font-size: 13.2px;
+  line-height: 1.22;
+  break-after: avoid;
+  page-break-after: avoid;
+}
+
+h4 {
+  margin: 12px 0 5px;
+  font-size: 11.8px;
+  break-after: avoid;
+  page-break-after: avoid;
+}
+
+hr {
+  height: 1px;
+  margin: 22px 0;
+  border: 0;
+  background: var(--brand-border);
+}
+
+.page-break {
+  break-before: page;
+  page-break-before: always;
+  height: 0;
+  margin: 0;
+  border: 0;
+}
+
+p {
+  margin: 7px 0;
+  orphans: 3;
+  widows: 3;
+  overflow-wrap: break-word;
+}
+
+ul,
+ol {
+  margin: 5px 0 7px;
+  padding-left: 18px;
+}
+
+li {
+  margin: 4px 0;
+  break-inside: avoid;
+  page-break-inside: avoid;
+  orphans: 2;
+  widows: 2;
+}
+
+strong {
+  color: var(--brand-ink);
+}
+
+blockquote {
+  margin: 13px 0;
+  padding: 10px 14px;
+  border-left: 4px solid var(--brand-orange);
+  background: var(--brand-light-gray);
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+blockquote p {
+  margin: 4px 0;
+}
+
+table {
+  width: 100%;
+  max-width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  margin: 8px 0 10px;
+  font-size: 10.8px;
+  line-height: 1.34;
+  break-inside: auto;
+  page-break-inside: auto;
+}
+
+thead {
+  display: table-header-group;
+}
+
+tfoot {
+  display: table-footer-group;
+}
+
+tr {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+th,
+td {
+  padding: 6px 8px;
+  border: 1px solid var(--brand-border);
+  text-align: left;
+  vertical-align: top;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+th {
+  background: #eaf1f6;
+  font-weight: 700;
+}
+
+td.num,
+th.num {
+  text-align: right;
+  white-space: nowrap;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+tr.total-row td {
+  border-top: 2px solid var(--brand-ink);
+  background: #f2f6f9;
+  font-weight: 800;
+}
+
+tr.subtotal-row td {
+  background: var(--brand-light-gray);
+  font-weight: 700;
+}
+
+a {
+  color: var(--brand-link);
+  text-decoration: none;
+}
+
+/* ---------- Callouts ---------- */
+
+.callout {
+  margin: 12px 0;
+  padding: 11px 14px;
+  border: 1px solid var(--brand-border);
+  border-left: 4px solid var(--brand-blue);
+  border-radius: 3px;
+  background: #f4f9fc;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.callout p {
+  margin: 4px 0;
+}
+
+.callout-label {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--brand-blue);
+  font-size: 7.6px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.module-meta {
+  margin: 4px 0 7px;
+  padding: 6px 10px;
+  border-left: 3px solid var(--brand-orange);
+  background: var(--brand-light-gray);
+  font-size: 10.6px;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.module-meta span {
+  display: inline-block;
+  margin-right: 14px;
+}
+
+.module-meta b {
+  font-weight: 800;
+}
+
+/* ---------- Diagrams ---------- */
+
+.diagram-block {
+  margin: 10px 0 14px;
+  padding: 12px 12px 14px;
+  border: 1px solid var(--brand-border);
+  border-radius: 4px;
+  background: #ffffff;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.diagram-block figcaption {
+  margin-bottom: 9px;
+  color: var(--brand-gray);
+  font-size: 8.6px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.arch-row {
+  display: flex;
+  gap: 8px;
+}
+
+.arch-node {
+  flex: 1;
+  padding: 9px 10px;
+  border: 1px solid var(--brand-mid-gray);
+  border-top: 3px solid var(--brand-blue);
+  border-radius: 3px;
+  background: #f8fafc;
+  text-align: center;
+}
+
+.arch-node.accent {
+  border-top-color: var(--brand-orange);
+  background: #fdf7f0;
+}
+
+.arch-node b {
+  display: block;
+  color: var(--brand-ink);
+  font-size: 10.2px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.arch-node span {
+  display: block;
+  margin-top: 3px;
+  color: var(--brand-gray);
+  font-size: 8.2px;
+  line-height: 1.3;
+}
+
+.arch-arrow {
+  position: relative;
+  height: 20px;
+}
+
+.arch-arrow::before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 50%;
+  width: 1px;
+  height: 12px;
+  margin-left: -0.5px;
+  background: var(--brand-mid-gray);
+}
+
+.arch-arrow::after {
+  content: "";
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  margin-left: -4px;
+  border-top: 6px solid var(--brand-mid-gray);
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+}
+
+.rm-band {
+  padding: 7px 11px;
+  border: 1px solid var(--brand-mid-gray);
+  border-radius: 3px;
+  background: #fdf7f0;
+  font-size: 9.4px;
+  text-align: center;
+}
+
+.rm-band b {
+  font-weight: 800;
+}
+
+.rm-band.support {
+  background: #f4f9fc;
+}
+
+.rm-track {
+  display: flex;
+  gap: 8px;
+  margin: 9px 0;
+}
+
+.rm-release {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  border: 1px solid var(--brand-mid-gray);
+  border-radius: 3px;
+  background: #f8fafc;
+  overflow: hidden;
+}
+
+.rm-release-head {
+  padding: 5px 8px;
+  background: var(--brand-blue);
+  color: #ffffff;
+  font-size: 8.2px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.rm-release-body {
+  flex: 1;
+  padding: 7px 8px 8px;
+}
+
+.rm-release-body b {
+  display: block;
+  color: var(--brand-ink);
+  font-size: 9.6px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.rm-release-body span {
+  display: block;
+  margin-top: 3px;
+  color: var(--brand-gray);
+  font-size: 8.1px;
+  line-height: 1.32;
+}
+
+.rm-gate {
+  padding: 4px 8px;
+  border-top: 1px dashed var(--brand-mid-gray);
+  background: #fdf7f0;
+  color: #a75c07;
+  font-size: 7.4px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.rm-milestone {
+  margin-top: 9px;
+  padding: 6px 11px;
+  border-left: 4px solid var(--brand-orange);
+  background: var(--brand-light-gray);
+  font-size: 9.4px;
+}
+
+/* ---------- Contact block ---------- */
+
+.contact-block {
+  margin-top: 16px;
+  padding: 14px 16px;
+  border: 1px solid var(--brand-border);
+  border-top: 3px solid var(--brand-orange);
+  border-radius: 4px;
+  background: var(--brand-light-gray);
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.contact-block h3 {
+  margin: 0 0 6px;
+  font-size: 12.4px;
+}
+
+.contact-block p {
+  margin: 3px 0;
+  font-size: 11px;
+}
+
+.document-footer {
+  display: none;
+}
+
+@media print {
+  body {
+    font-size: 12px;
+  }
+
+  .cover-page,
+  .toc-page {
+    min-height: 260mm;
+    height: 260mm;
+  }
+
+  .document-body {
+    min-height: auto;
+    padding: 0;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  h2 + p,
+  h2 + ul,
+  h2 + ol,
+  h2 + table,
+  h2 + .module-meta,
+  h3 + p,
+  h3 + ul,
+  h3 + ol,
+  h3 + table,
+  h3 + .module-meta {
+    break-before: avoid;
+    page-break-before: avoid;
+  }
+
+  p,
+  li,
+  blockquote {
+    orphans: 3;
+    widows: 3;
+  }
+}
+  
+  </style>
+</head>
+<body>
+<footer class="document-footer">
+  <span class="page-marker" data-file="proposal-databypassion-reallife.pdf"></span>
+</footer>
+
+<section class="cover-page">
+  <div class="cover-brand">
+    <div class="cover-logo-tile"><img src="dtabypassion_logo.png" alt="DatabyPassion"></div>
+    <div>
+      <div class="brand-name">DatabyPassion</div>
+      <div class="brand-tagline">Enterprise expertise. Built at startup speed.</div>
+    </div>
+  </div>
+  <div class="cover-content">
+    <p class="cover-eyebrow">Commercial offer &middot; Digital products</p>
+    <h1>Real Life Technologies website</h1>
+    <p class="cover-subtitle">A bilingual institutional site that matches the firm: four pillars, Nuno&rsquo;s art direction, shipped as working software &mdash; not a brochure that pretends.</p>
+
+    <div class="cover-meta">
+      <div class="cover-meta-row"><span>Prepared for</span><strong>Nuno Melo S&atilde;o Pedro &middot; Real Life Technologies</strong></div>
+      <div class="cover-meta-row"><span>Prepared by</span><strong>DatabyPassion &middot; Lisboa, Portugal</strong></div>
+      <div class="cover-meta-row"><span>Date</span><strong>16 September 2026</strong></div>
+      <div class="cover-meta-row"><span>Validity</span><strong>14 days from the date above</strong></div>
+    </div>
+
+    <div class="cover-headline-figures">
+      <div class="cover-figure"><b>&euro;9,500</b><span>Build, excluding IVA</span></div>
+      <div class="cover-figure"><b>&euro;149 / month</b><span>Care Standard from go-live (hosting included)</span></div>
+      <div class="cover-figure"><b>Understand &rarr; Shape &rarr; Build &rarr; Evolve</b><span>Same method as the DatabyPassion studio</span></div>
+    </div>
+
+    <section class="cover-summary">
+      <h2>Executive Summary</h2>
+      <p>The live site at reallife.pt is not at the level of an ICT integrator of this size. The mock you shared already has the right language: dark, gold, four pillars. This offer is to ship that first product &mdash; Portuguese and English, on your domain, without touching mail &mdash; as DatabyPassion&rsquo;s Digital products practice. Numbers below are the default after the discovery call; they can move if Understand changes scope. They are not a close on the call.</p>
+    </section>
+  </div>
+  <div class="cover-footer">
+    <span>DatabyPassion &middot; databy-passion-website.vercel.app</span>
+    <span>Commercial in confidence</span>
+  </div>
+</section>
+
+<section class="toc-page">
+  <div class="toc-card">
+    <h2>Contents</h2>
+    <ol>
+      <li>Why DatabyPassion</li>
+      <li>Why this site now</li>
+      <li>First product</li>
+      <li>Prototype</li>
+      <li>Domains</li>
+      <li>How we deliver</li>
+      <li>Build price</li>
+      <li>Evolve &mdash; hosting and care</li>
+      <li>Next steps</li>
+      <li>Contact</li>
+    </ol>
+  </div>
+</section>
+
+<main class="document-body">
+
+<p><strong>Project:</strong> Real Life Technologies institutional website</p>
+<p><strong>Client:</strong> Real Life Technologies</p>
+<p><strong>Prepared by:</strong> DatabyPassion, Lisboa, Portugal</p>
+<p><strong>Date:</strong> 16 September 2026</p>
+<p><strong>Currency:</strong> EUR. All prices exclude IVA unless stated otherwise. IVA is shown at the current legal rate of 23 percent.</p>
+<p><strong>Validity:</strong> 14 days from the date above.</p>
+
+<h2 id="why">Why DatabyPassion</h2>
+<p>DatabyPassion is a founder-led technology studio. Line: <strong>Enterprise expertise. Built at startup speed.</strong> This engagement is the Digital products practice: websites, web apps, internal tools and digital experiences &mdash; shipped as working products, not a brochure that pretends.</p>
+<ul>
+<li><strong>One engagement lead stays in the work.</strong> No account layer between the call and the commit.</li>
+<li><strong>Build and show.</strong> A working prototype exists before you sign. The first release is small enough to ship.</li>
+<li><strong>Leave something you can run.</strong> Hosting, care and DNS are explicit. Mail (MX) is not touched.</li>
+</ul>
+<p>Studio: <a href="https://databy-passion-website.vercel.app/">databy-passion-website.vercel.app</a></p>
+
+<h2 id="why-now">Why this site now</h2>
+<p>Google and clients currently see an old WordPress property: broken chrome, 2020&ndash;21 Cisco news as homepage, mixed navigation. The firm is an ICT integrator founded in 2008, around 150 people, with certified vendor relationships (Cisco Gold, HPE Partner Ready, CrowdStrike, Huawei). The public surface should match that. Your mock already points the way. We modernise <strong>reallife.pt</strong> in that language. We do not put a parent-group line on the site unless you confirm it on the call.</p>
+
+<h2 id="product">First product</h2>
+<p>Portuguese default, English switcher. Routes:</p>
+<table>
+  <thead><tr><th>Page</th><th>Intent</th></tr></thead>
+  <tbody>
+    <tr><td>Home</td><td>Sculpture hero, gold ribbon, How We Help, Ready to Talk, four pillars, trust names</td></tr>
+    <tr><td>Software</td><td>Applications, portals, integrations</td></tr>
+    <tr><td>Infrastructure</td><td>Networks, data centre, cloud, workplace</td></tr>
+    <tr><td>Consulting</td><td>Architecture and transformation with the team that then builds</td></tr>
+    <tr><td>Support</td><td>Operate what was delivered</td></tr>
+    <tr><td>About</td><td>2008, geographies, people &mdash; parent group only if you confirm</td></tr>
+    <tr><td>Contact</td><td>Form plus geral@reallife.pt</td></tr>
+  </tbody>
+</table>
+<p>Out of this first product: CMS, real form-to-inbox until go-live, partner trademark logos without permission (text names are fine), data platforms / AI (Evolve later, only if earned).</p>
+
+<h2 id="prototype">Prototype</h2>
+<p>A working Next.js prototype is already visible:</p>
+<p><a href="https://reallifetechnologies.vercel.app">https://reallifetechnologies.vercel.app</a></p>
+<p>Source: <a href="https://github.com/Tiago-Domingues/reallifetechnologies">github.com/Tiago-Domingues/reallifetechnologies</a>. Preview stays on Vercel until you point DNS. WordPress remains on reallife.pt until written go-live.</p>
+
+<h2 id="domains">Domains</h2>
+<p>Facts to confirm, then decisions to write down. Mail in use today: <strong>geral@reallife.pt</strong>. Pointing A/CNAME at Vercel must not touch MX, SPF or DKIM.</p>
+<table>
+  <thead><tr><th>Confirm</th><th>Agree before go-live</th></tr></thead>
+  <tbody>
+    <tr><td>Who holds reallife.pt (company, group IT, agency, Nuno)? DNS / DNSSEC access?</td><td>Canonical host: reallife.pt or www (one primary, the other 301)</td></tr>
+    <tr><td>Existing reallife.com, reallifetechnologies.com, country TLDs?</td><td>Extra hosts: redirects only vs separate country sites</td></tr>
+    <tr><td>Must email keep working through cutover?</td><td>Keep WordPress live until go-live; preview on *.vercel.app</td></tr>
+    <tr><td>Stay on reallife.pt or a new independent brand domain?</td><td>Who buys/renews; who holds the registrar login. DNS change only after written yes + MX check</td></tr>
+  </tbody>
+</table>
+
+<h2 id="method">How we deliver</h2>
+<figure class="diagram-block">
+  <figcaption>DatabyPassion method</figcaption>
+  <div class="arch-row">
+    <div class="arch-node"><b>Understand</b><span>This call &middot; problem frame</span></div>
+    <div class="arch-node"><b>Shape</b><span>Prototype + written first product</span></div>
+    <div class="arch-node accent"><b>Build</b><span>Three visible loops</span></div>
+    <div class="arch-node"><b>Evolve</b><span>Care Standard &middot; next product only if earned</span></div>
+  </div>
+</figure>
+<p>If the word &ldquo;sprints&rdquo; comes up: short loops inside Build. The method is Understand, Shape, Build, Evolve &mdash; the same as the studio site.</p>
+<table>
+  <thead><tr><th>Loop</th><th>What you see</th></tr></thead>
+  <tbody>
+    <tr><td>1 &mdash; Homepage lock</td><td>Hero, ribbon, How We Help, Ready to Talk</td></tr>
+    <tr><td>2 &mdash; Pillars / About / Contact</td><td>Four routes plus about and contact, working on desktop and mobile</td></tr>
+    <tr><td>3 &mdash; Bilingual, legal, DNS</td><td>PT/EN, cookies/privacy, cutover plan with MX untouched. First month of Care can sit here so it is not a surprise.</td></tr>
+  </tbody>
+</table>
+
+<h2 id="price">Build price</h2>
+<div class="module-meta"><span>Default first product</span><b>&euro;9,500 excluding IVA</b><span>&euro;11,685 including IVA at 23%</span></div>
+<table>
+  <thead><tr><th>Item</th><th class="num">EUR ex-IVA</th></tr></thead>
+  <tbody>
+    <tr><td>Institutional site, PT/EN, seven routes, prototype already visible, go-live on your domain</td><td class="num">9,500</td></tr>
+    <tr class="total-row"><td>Build total</td><td class="num">9,500</td></tr>
+  </tbody>
+</table>
+<p>Payment: <strong>40% on start of loop 1 / 40% on start of loop 2 / 20% at go-live</strong>. 50/50 if you prefer not to split the middle. Floor if Understand shrinks scope: &euro;8,000. If a CMS and training are added: &euro;14,500. Those alternatives are not this default.</p>
+<p>Portuguese market context for a custom bilingual institutional site is roughly &euro;8,000&ndash;20,000 excluding IVA. This default sits in the low-mid of that band as a first official DatabyPassion product &mdash; not the WordPress PME band of a few thousand euros.</p>
+
+<h2 id="evolve">Evolve &mdash; hosting and care</h2>
+<p>Hosting and maintenance are monthly, not folded into the build. Recommended from go-live: <strong>Care Standard</strong>.</p>
+<table>
+  <thead><tr><th>SKU</th><th>Includes</th><th class="num">EUR / month ex-IVA</th></tr></thead>
+  <tbody>
+    <tr><td>Hosting only</td><td>Vercel, SSL, backups</td><td class="num">49</td></tr>
+    <tr class="total-row"><td>Care Standard (recommended)</td><td>Hosting + uptime + patches + 2 hours of edits / month</td><td class="num">149</td></tr>
+    <tr><td>Care Plus</td><td>4 hours of edits, SLA next business day</td><td class="num">249</td></tr>
+  </tbody>
+</table>
+<p>Data platforms or AI are not in this first product. They become a conversation only if the site is used and you ask.</p>
+
+<h2 id="next">Next steps</h2>
+<ol>
+  <li>Discovery call (Understand) &mdash; already scheduled.</li>
+  <li>Written recap the same day: who signs, domains, parent-group line yes/no, languages, Care from day one, recap date.</li>
+  <li>This offer, filled with anything Understand changed, sent the same day. Do not treat the call as a price close.</li>
+  <li>Signature, then Build loop 1.</li>
+</ol>
+<blockquote><p>Controls if you ask: contractual confidentiality, least-privilege access, no unrelated model training. Legal entity details including NIF and registered address are provided at contracting.</p></blockquote>
+
+<h2 id="contact">Contact</h2>
+<div class="contact-block">
+  <h3>DatabyPassion</h3>
+  <p><strong>Tiago Paix&atilde;o Moreira Domingues</strong> &mdash; Founder and Delivery Lead</p>
+  <p>Lisboa, Portugal</p>
+  <p><a href="mailto:tiagopaixaodomingues@gmail.com">tiagopaixaodomingues@gmail.com</a></p>
+  <p><a href="https://databy-passion-website.vercel.app/">databy-passion-website.vercel.app</a></p>
+  <p>Legal entity details, including tax identification and registered address, are provided at contracting stage.</p>
+</div>
+<p>This offer is submitted to Real Life Technologies and is valid for 14 days from 16 September 2026. All prices are in euros and exclude IVA unless stated otherwise. DatabyPassion treats this document and all information exchanged as confidential.</p>
+</main>
+</body>
+</html>

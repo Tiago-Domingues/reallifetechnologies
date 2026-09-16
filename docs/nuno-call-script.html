@@ -1,0 +1,882 @@
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8">
+  <title>DatabyPassion — script interno Nuno / RLT (não enviar)</title>
+  <style>
+
+:root {
+  color-scheme: light;
+  --brand-ink: #1f2430;
+  --brand-dark: #12161f;
+  --brand-blue: #2e7fa8;
+  --brand-blue-light: #7bc5e8;
+  --brand-orange: #f5871f;
+  --brand-cream: #fbf9ef;
+  --brand-gray: #6f7280;
+  --brand-mid-gray: #b9bcc6;
+  --brand-light-gray: #f5f6f9;
+  --brand-border: #d9dbe2;
+  --brand-link: #1f6f9c;
+  --page-side: 70px;
+  --page-top: 50px;
+  --page-bottom: 66px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@page {
+  size: A4;
+  margin: 14mm 18mm 19mm;
+}
+
+@page cover {
+  margin: 0;
+}
+
+@page toc {
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  color: var(--brand-ink);
+  background: #ffffff;
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-size: 12.3px;
+  line-height: 1.44;
+  overflow-wrap: break-word;
+}
+
+.cover-page,
+.toc-page,
+.document-body {
+  padding: var(--page-top) var(--page-side) var(--page-bottom);
+}
+
+/* ---------- Cover ---------- */
+
+.cover-page {
+  page: cover;
+  position: relative;
+  min-height: 100vh;
+  page-break-after: always;
+  overflow: hidden;
+  color: #ffffff;
+  background:
+    radial-gradient(circle at 78% 10%, rgba(123, 197, 232, 0.34), transparent 26%),
+    radial-gradient(circle at 22% 30%, rgba(46, 127, 168, 0.42), transparent 26%),
+    radial-gradient(circle at 84% 78%, rgba(245, 135, 31, 0.26), transparent 20%),
+    linear-gradient(135deg, #0e1219 0%, #18202e 46%, #141a26 100%);
+}
+
+.cover-brand {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.cover-logo-tile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 132px;
+  padding: 9px 11px;
+  border-radius: 8px;
+  background: var(--brand-cream);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.28);
+}
+
+.cover-logo-tile img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.brand-name {
+  position: relative;
+  padding-top: 20px;
+  color: #ffffff;
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: -0.015em;
+}
+
+.brand-name::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 58px;
+  height: 6px;
+  background: var(--brand-orange);
+  transform: skewY(-7deg);
+  transform-origin: left center;
+}
+
+.brand-tagline {
+  margin-top: 4px;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 8.4px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.cover-content {
+  position: relative;
+  z-index: 1;
+  max-width: 690px;
+  margin-top: 72px;
+}
+
+.cover-eyebrow {
+  margin: 0 0 10px;
+  color: var(--brand-blue-light);
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.cover-page h1 {
+  margin: 0;
+  max-width: 620px;
+  color: #ffffff;
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+}
+
+.cover-subtitle {
+  max-width: 600px;
+  margin: 10px 0 0;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 13.5px;
+  line-height: 1.3;
+}
+
+.cover-meta {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+  max-width: 540px;
+  margin-top: 26px;
+}
+
+.cover-meta-row {
+  position: relative;
+  min-height: 48px;
+  padding: 9px 12px 8px;
+  border: 1px solid rgba(123, 197, 232, 0.6);
+  border-left: 3px solid var(--brand-blue-light);
+  background: rgba(255, 255, 255, 0.055);
+}
+
+.cover-meta-row span {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--brand-blue-light);
+  font-size: 7.2px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.cover-meta-row strong {
+  display: block;
+  color: #ffffff;
+  font-size: 9.6px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.cover-headline-figures {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 9px;
+  max-width: 540px;
+  margin-top: 22px;
+}
+
+.cover-figure {
+  padding: 10px 12px;
+  border-top: 3px solid var(--brand-orange);
+  background: rgba(255, 255, 255, 0.055);
+}
+
+.cover-figure b {
+  display: block;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.cover-figure span {
+  display: block;
+  margin-top: 3px;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 7.6px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.cover-summary {
+  max-width: 625px;
+  margin-top: 24px;
+}
+
+.cover-summary h2 {
+  margin: 0 0 7px;
+  padding: 0;
+  border: 0;
+  color: #ffffff;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.cover-summary p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.87);
+  font-size: 10.4px;
+  line-height: 1.46;
+}
+
+.cover-footer {
+  position: absolute;
+  right: var(--page-side);
+  bottom: 30px;
+  left: var(--page-side);
+  display: flex;
+  justify-content: space-between;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.26);
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 7.6px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* ---------- Table of contents ---------- */
+
+.toc-page {
+  page: toc;
+  min-height: 100vh;
+  page-break-after: always;
+  background:
+    radial-gradient(circle at 78% 16%, rgba(123, 197, 232, 0.3), transparent 28%),
+    radial-gradient(circle at 10% 40%, rgba(245, 135, 31, 0.14), transparent 26%),
+    #ffffff;
+}
+
+.toc-card {
+  max-width: 600px;
+  margin: 14px auto 0;
+  padding: 16px 22px 18px;
+  border: 1px solid #cfd2dc;
+  border-radius: 8px;
+  background: linear-gradient(112deg, rgba(232, 245, 251, 0.9), rgba(253, 249, 242, 0.94));
+  box-shadow: 0 1px 2px rgba(31, 36, 48, 0.08);
+}
+
+.toc-card h2 {
+  margin-top: 0;
+  margin-bottom: 11px;
+  padding-top: 0;
+  border-top: 0;
+  color: var(--brand-ink);
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.toc-card ol,
+.toc-card ul {
+  max-width: 100%;
+  margin: 0;
+  padding-left: 17px;
+  color: var(--brand-ink);
+  font-size: 8.4px;
+  line-height: 1.5;
+}
+
+.toc-card li {
+  margin: 2.5px 0;
+}
+
+.toc-card ul ul {
+  padding-left: 14px;
+  color: var(--brand-gray);
+  font-size: 7.9px;
+}
+
+.toc-card a {
+  color: inherit;
+}
+
+/* ---------- Typography ---------- */
+
+h1 {
+  margin: 0 0 10px;
+  font-size: 28px;
+  line-height: 1.15;
+}
+
+h2 {
+  margin: 22px 0 8px;
+  padding-top: 7px;
+  border-top: 2px solid var(--brand-blue-light);
+  font-size: 17px;
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+  break-after: avoid;
+  page-break-after: avoid;
+}
+
+h3 {
+  margin: 15px 0 6px;
+  font-size: 13.2px;
+  line-height: 1.22;
+  break-after: avoid;
+  page-break-after: avoid;
+}
+
+h4 {
+  margin: 12px 0 5px;
+  font-size: 11.8px;
+  break-after: avoid;
+  page-break-after: avoid;
+}
+
+hr {
+  height: 1px;
+  margin: 22px 0;
+  border: 0;
+  background: var(--brand-border);
+}
+
+.page-break {
+  break-before: page;
+  page-break-before: always;
+  height: 0;
+  margin: 0;
+  border: 0;
+}
+
+p {
+  margin: 7px 0;
+  orphans: 3;
+  widows: 3;
+  overflow-wrap: break-word;
+}
+
+ul,
+ol {
+  margin: 5px 0 7px;
+  padding-left: 18px;
+}
+
+li {
+  margin: 4px 0;
+  break-inside: avoid;
+  page-break-inside: avoid;
+  orphans: 2;
+  widows: 2;
+}
+
+strong {
+  color: var(--brand-ink);
+}
+
+blockquote {
+  margin: 13px 0;
+  padding: 10px 14px;
+  border-left: 4px solid var(--brand-orange);
+  background: var(--brand-light-gray);
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+blockquote p {
+  margin: 4px 0;
+}
+
+table {
+  width: 100%;
+  max-width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  margin: 8px 0 10px;
+  font-size: 10.8px;
+  line-height: 1.34;
+  break-inside: auto;
+  page-break-inside: auto;
+}
+
+thead {
+  display: table-header-group;
+}
+
+tfoot {
+  display: table-footer-group;
+}
+
+tr {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+th,
+td {
+  padding: 6px 8px;
+  border: 1px solid var(--brand-border);
+  text-align: left;
+  vertical-align: top;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+th {
+  background: #eaf1f6;
+  font-weight: 700;
+}
+
+td.num,
+th.num {
+  text-align: right;
+  white-space: nowrap;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+tr.total-row td {
+  border-top: 2px solid var(--brand-ink);
+  background: #f2f6f9;
+  font-weight: 800;
+}
+
+tr.subtotal-row td {
+  background: var(--brand-light-gray);
+  font-weight: 700;
+}
+
+a {
+  color: var(--brand-link);
+  text-decoration: none;
+}
+
+/* ---------- Callouts ---------- */
+
+.callout {
+  margin: 12px 0;
+  padding: 11px 14px;
+  border: 1px solid var(--brand-border);
+  border-left: 4px solid var(--brand-blue);
+  border-radius: 3px;
+  background: #f4f9fc;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.callout p {
+  margin: 4px 0;
+}
+
+.callout-label {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--brand-blue);
+  font-size: 7.6px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.module-meta {
+  margin: 4px 0 7px;
+  padding: 6px 10px;
+  border-left: 3px solid var(--brand-orange);
+  background: var(--brand-light-gray);
+  font-size: 10.6px;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.module-meta span {
+  display: inline-block;
+  margin-right: 14px;
+}
+
+.module-meta b {
+  font-weight: 800;
+}
+
+/* ---------- Diagrams ---------- */
+
+.diagram-block {
+  margin: 10px 0 14px;
+  padding: 12px 12px 14px;
+  border: 1px solid var(--brand-border);
+  border-radius: 4px;
+  background: #ffffff;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.diagram-block figcaption {
+  margin-bottom: 9px;
+  color: var(--brand-gray);
+  font-size: 8.6px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.arch-row {
+  display: flex;
+  gap: 8px;
+}
+
+.arch-node {
+  flex: 1;
+  padding: 9px 10px;
+  border: 1px solid var(--brand-mid-gray);
+  border-top: 3px solid var(--brand-blue);
+  border-radius: 3px;
+  background: #f8fafc;
+  text-align: center;
+}
+
+.arch-node.accent {
+  border-top-color: var(--brand-orange);
+  background: #fdf7f0;
+}
+
+.arch-node b {
+  display: block;
+  color: var(--brand-ink);
+  font-size: 10.2px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.arch-node span {
+  display: block;
+  margin-top: 3px;
+  color: var(--brand-gray);
+  font-size: 8.2px;
+  line-height: 1.3;
+}
+
+.arch-arrow {
+  position: relative;
+  height: 20px;
+}
+
+.arch-arrow::before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 50%;
+  width: 1px;
+  height: 12px;
+  margin-left: -0.5px;
+  background: var(--brand-mid-gray);
+}
+
+.arch-arrow::after {
+  content: "";
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  margin-left: -4px;
+  border-top: 6px solid var(--brand-mid-gray);
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+}
+
+.rm-band {
+  padding: 7px 11px;
+  border: 1px solid var(--brand-mid-gray);
+  border-radius: 3px;
+  background: #fdf7f0;
+  font-size: 9.4px;
+  text-align: center;
+}
+
+.rm-band b {
+  font-weight: 800;
+}
+
+.rm-band.support {
+  background: #f4f9fc;
+}
+
+.rm-track {
+  display: flex;
+  gap: 8px;
+  margin: 9px 0;
+}
+
+.rm-release {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  border: 1px solid var(--brand-mid-gray);
+  border-radius: 3px;
+  background: #f8fafc;
+  overflow: hidden;
+}
+
+.rm-release-head {
+  padding: 5px 8px;
+  background: var(--brand-blue);
+  color: #ffffff;
+  font-size: 8.2px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.rm-release-body {
+  flex: 1;
+  padding: 7px 8px 8px;
+}
+
+.rm-release-body b {
+  display: block;
+  color: var(--brand-ink);
+  font-size: 9.6px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.rm-release-body span {
+  display: block;
+  margin-top: 3px;
+  color: var(--brand-gray);
+  font-size: 8.1px;
+  line-height: 1.32;
+}
+
+.rm-gate {
+  padding: 4px 8px;
+  border-top: 1px dashed var(--brand-mid-gray);
+  background: #fdf7f0;
+  color: #a75c07;
+  font-size: 7.4px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.rm-milestone {
+  margin-top: 9px;
+  padding: 6px 11px;
+  border-left: 4px solid var(--brand-orange);
+  background: var(--brand-light-gray);
+  font-size: 9.4px;
+}
+
+/* ---------- Contact block ---------- */
+
+.contact-block {
+  margin-top: 16px;
+  padding: 14px 16px;
+  border: 1px solid var(--brand-border);
+  border-top: 3px solid var(--brand-orange);
+  border-radius: 4px;
+  background: var(--brand-light-gray);
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.contact-block h3 {
+  margin: 0 0 6px;
+  font-size: 12.4px;
+}
+
+.contact-block p {
+  margin: 3px 0;
+  font-size: 11px;
+}
+
+.document-footer {
+  display: none;
+}
+
+@media print {
+  body {
+    font-size: 12px;
+  }
+
+  .cover-page,
+  .toc-page {
+    min-height: 260mm;
+    height: 260mm;
+  }
+
+  .document-body {
+    min-height: auto;
+    padding: 0;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  h2 + p,
+  h2 + ul,
+  h2 + ol,
+  h2 + table,
+  h2 + .module-meta,
+  h3 + p,
+  h3 + ul,
+  h3 + ol,
+  h3 + table,
+  h3 + .module-meta {
+    break-before: avoid;
+    page-break-before: avoid;
+  }
+
+  p,
+  li,
+  blockquote {
+    orphans: 3;
+    widows: 3;
+  }
+}
+  
+  </style>
+</head>
+<body>
+<footer class="document-footer">
+  <span class="page-marker" data-file="nuno-call-script.pdf"></span>
+</footer>
+
+<section class="cover-page">
+  <div class="cover-brand">
+    <div class="cover-logo-tile"><img src="dtabypassion_logo.png" alt="DatabyPassion"></div>
+    <div>
+      <div class="brand-name">DatabyPassion</div>
+      <div class="brand-tagline">Interno &middot; n&atilde;o enviar</div>
+    </div>
+  </div>
+  <div class="cover-content">
+    <p class="cover-eyebrow">Script de call &middot; confidencial</p>
+    <h1>Zoom com Nuno &mdash; Real Life Technologies</h1>
+    <p class="cover-subtitle">A call &eacute; Understand. N&atilde;o fechar pre&ccedil;o. Cotação em ingl&ecirc;s no mesmo dia. Mostrar o prot&oacute;tipo. N&atilde;o falar de Jhonny. N&atilde;o dizer 9.500 em voz alta.</p>
+    <div class="cover-meta">
+      <div class="cover-meta-row"><span>Idioma da call</span><strong>Portugu&ecirc;s</strong></div>
+      <div class="cover-meta-row"><span>Idioma da cotação</span><strong>Ingl&ecirc;s</strong></div>
+      <div class="cover-meta-row"><span>Facturação</span><strong>DatabyPassion (empresa)</strong></div>
+      <div class="cover-meta-row"><span>Default na PDF</span><strong>&euro;9.500 + IVA &middot; Care &euro;149/m&ecirc;s</strong></div>
+    </div>
+    <div class="cover-headline-figures">
+      <div class="cover-figure"><b>~40 min</b><span>Agenda abaixo</span></div>
+      <div class="cover-figure"><b>8&ndash;15 mil</b><span>Faixa s&oacute; se ele apertar por um n&uacute;mero</span></div>
+      <div class="cover-figure"><b>Mesmo dia</b><span>Cotação escrita depois da call</span></div>
+    </div>
+  </div>
+  <div class="cover-footer">
+    <span>DatabyPassion &middot; uso interno</span>
+    <span>N&atilde;o enviar ao cliente</span>
+  </div>
+</section>
+
+<section class="toc-page">
+  <div class="toc-card">
+    <h2>Conte&uacute;do</h2>
+    <ol>
+      <li>Agenda</li>
+      <li>O que dizer</li>
+      <li>Diagn&oacute;stico do site actual</li>
+      <li>Perguntas</li>
+      <li>Dom&iacute;nios</li>
+      <li>Pre&ccedil;o na call</li>
+      <li>Acordar antes de desligar</li>
+    </ol>
+  </div>
+</section>
+
+<main class="document-body">
+
+<p><strong>Confidencial.</strong> N&atilde;o partilhar com Nuno. A cotação do cliente &eacute; o PDF em ingl&ecirc;s.</p>
+
+<h2>Agenda (~40 min)</h2>
+<ol>
+  <li>Intro DatabyPassion (2 min)</li>
+  <li>Ouvir (12 min)</li>
+  <li>Diagn&oacute;stico (5 min)</li>
+  <li>Mostrar o prot&oacute;tipo Vercel (8 min)</li>
+  <li>Como entregamos: Understand &rarr; Shape &rarr; Build &rarr; Evolve + Care (5 min)</li>
+  <li>Acordar pr&oacute;ximo passo: cotação hoje (3 min) &mdash; sem fechar pre&ccedil;o</li>
+</ol>
+
+<h2>O que dizer</h2>
+<ul>
+  <li>&ldquo;A DatabyPassion &eacute; uma boutique founder-led. Este seria o primeiro produto: o vosso site, na pr&aacute;tica Digital products.&rdquo;</li>
+  <li>&ldquo;O site actual n&atilde;o est&aacute; ao n&iacute;vel da empresa. O teu mock j&aacute; &eacute; o caminho certo.&rdquo;</li>
+  <li>&ldquo;O m&eacute;todo &eacute; o mesmo do nosso site: Understand, Shape, Build, Evolve. Depois desta call mando a cotação, com o Build e o Evolve (hosting e manuten&ccedil;&atilde;o).&rdquo;</li>
+  <li>Prova: <a href="https://databy-passion-website.vercel.app/">databy-passion-website.vercel.app</a> + prot&oacute;tipo RLT. N&atilde;o liderar com Jhonny. Mercer / EY ficam fora.</li>
+</ul>
+<p>Se ele disser &ldquo;sprints&rdquo;: &ldquo;Sim &mdash; loops curtos dentro do Build. O m&eacute;todo &eacute; Understand, Shape, Build, Evolve, o mesmo da DatabyPassion.&rdquo;</p>
+
+<h2>Diagn&oacute;stico (n&atilde;o misturar as duas coisas)</h2>
+<ul>
+  <li><strong>Produ&ccedil;&atilde;o:</strong> reallife.pt &mdash; WordPress antigo, header partido, not&iacute;cia Cisco 2020&ndash;21 como homepage, navega&ccedil;&atilde;o misturada.</li>
+  <li><strong>O que ele chamou &ldquo;o que existe actualmente&rdquo;:</strong> partilha Google Sites (refer&ecirc;ncia, n&atilde;o o design system).</li>
+  <li><strong>O que ele quer:</strong> o mock escuro + ribbon dourado + Software / Infrastructure / Consulting / Support / About / Contact.</li>
+</ul>
+<p>About no prot&oacute;tipo: 2008, Cisco, geografias. <strong>Sem</strong> &ldquo;parte da Visabeira Global&rdquo; at&eacute; ele confirmar. N&atilde;o inventar sal&aacute;rio nem 30% de ownership. Perguntar quem assina.</p>
+<p>Poss&iacute;vel deal 2026 (verificar): Omnium lista um investimento Core Capital Q2 2026 de &euro;12,4M em &ldquo;Real Life Technologies&rdquo;. Confirmar se &eacute; a mesma empresa e quem &eacute; dono agora.</p>
+
+<h2>Perguntas</h2>
+<ul>
+  <li>Quem assina o contrato e quem paga?</li>
+  <li>Visabeira sai do site, sim ou n&atilde;o?</li>
+  <li>PT/EN chega, ou h&aacute; FR / mercado africano?</li>
+  <li>CMS para a equipa editar, ou p&aacute;ginas est&aacute;ticas connosco?</li>
+  <li>Care / hosting desde o go-live?</li>
+  <li>Data para um recap de 20 min depois da cotação?</li>
+</ul>
+
+<h2>Dom&iacute;nios &mdash; confirmar e acordar</h2>
+<p><strong>Confirmar:</strong> titular de reallife.pt; acesso DNS; outros TLDs; MX tem de continuar; marca independente depois do deal?</p>
+<p><strong>Acordar:</strong> can&oacute;nico reallife.pt vs www; extras s&oacute; redirect; WordPress fica at&eacute; go-live; preview em *.vercel.app; quem renova; DNS s&oacute; com sim escrito + check MX.</p>
+
+<h2>Pre&ccedil;o na call</h2>
+<p><strong>N&atilde;o fechar n&uacute;mero.</strong> N&atilde;o dizer &euro;9.500 em voz alta.</p>
+<p>Se apertar: &ldquo;Em Portugal um site institucional &agrave; medida bilingue anda <strong>entre 8 e 15 mil euros</strong> mais IVA. Fecho o valor na cotação depois desta conversa, com hosting e manuten&ccedil;&atilde;o &agrave; parte.&rdquo;</p>
+<p>Na cabe&ccedil;a: ch&atilde;o &euro;8.000 &middot; default PDF &euro;9.500 &middot; CMS+formação &euro;14.500. Care Standard &euro;149/m&ecirc;s (recomendado). Hosting s&oacute; &euro;49. Care Plus &euro;249.</p>
+
+<h2>Acordar antes de desligar</h2>
+<ul>
+  <li>Quem assina</li>
+  <li>Dom&iacute;nios</li>
+  <li>Visabeira off sim/n&atilde;o</li>
+  <li>PT/EN</li>
+  <li>Cotação hoje (ingl&ecirc;s)</li>
+  <li>Data do recap de 20 min</li>
+</ul>
+<div class="contact-block">
+  <h3>Depois da call</h3>
+  <p>Recap curto em PT por WhatsApp ou mail. PDF em ingl&ecirc;s: docs/proposal-databypassion-reallife.pdf. Ajustar n&uacute;meros s&oacute; se o Understand mudou o &acirc;mbito.</p>
+</div>
+</main>
+</body>
+</html>
